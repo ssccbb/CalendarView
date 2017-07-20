@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="50dp"
+    android:layout_width="match_parent"
     android:layout_height="50dp"
+    android:paddingBottom="1dp"
+    android:paddingTop="1dp"
     android:id="@+id/calendar_item_root"
     android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/calendar_item_sellect"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/calendar_item_text_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/calendar_item_text_day"
         android:layout_centerHorizontal="true"
-        android:text="8月"
+        android:text="1月"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
         android:textColor="@android:color/holo_orange_dark"
-        android:textSize="8dp"
-        android:visibility="gone" />
+        android:textSize="10dp"
+        />
 
     <TextView
         android:id="@+id/calendar_item_text_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="12"
+        android:text="1"
         android:textColor="@android:color/black"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
 </RelativeLayout>

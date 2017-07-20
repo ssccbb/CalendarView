@@ -16,6 +16,7 @@ public class DateObject implements Serializable{
     public String YYMM;//年月
     public int position;//在grid中的位置
     public boolean currentMonth = false;
+    public boolean sellectStatus = false;
 
     public DateObject() {
     }

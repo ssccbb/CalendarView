@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -26,7 +27,7 @@ import java.util.TimeZone;
  * 带日期签到的日历控件
  */
 
-public class CalendarView extends RelativeLayout implements ViewPager.OnPageChangeListener{
+public class CalendarView extends RelativeLayout implements ViewPager.OnPageChangeListener,DateAdapter.onCalendarDayClick{
     private static final String TAG = "CalendarView";
     private Context context;
 
@@ -78,7 +79,9 @@ public class CalendarView extends RelativeLayout implements ViewPager.OnPageChan
             View pager = LayoutInflater.from(context).inflate(R.layout.layout_calendar_pager, null);
             RecyclerView date = (RecyclerView) pager.findViewById(R.id.calendar_recycle);
             date.setLayoutManager(new GridLayoutManager(context,7));
-            date.setAdapter(new DateAdapter(null));
+            DateAdapter adapter = new DateAdapter(null);
+            adapter.setOnCalendarDayClickListner(this);
+            date.setAdapter(adapter);
             date.setHasFixedSize(true);
             pager.setTag(date);
             views.add(pager);
@@ -166,5 +169,10 @@ public class CalendarView extends RelativeLayout implements ViewPager.OnPageChan
 
     @Override
     public void onPageScrollStateChanged(int state) {
+    }
+
+    @Override
+    public void onClick(int position) {
+        Log.d(TAG, "onClick: "+position);
     }
 }
