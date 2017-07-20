@@ -6,7 +6,8 @@
 
     <TextView
         android:id="@+id/calendar_time_text"
-        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:paddingLeft="3dp"
         android:text="2017年10月"
         android:textSize="22sp"
         android:layout_width="match_parent"

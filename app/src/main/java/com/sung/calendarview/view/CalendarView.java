@@ -37,8 +37,6 @@ public class CalendarView extends RelativeLayout implements ViewPager.OnPageChan
     private int LAST_PAGER_SELECT = 0;
     private int CURRENT_PAGER_SELECT = 0;
     private DateObject mDate;
-    //月
-    private int[] months = {0,1,2,3,4,5,6,7,8,9,10,11};
 
     public CalendarView(Context context) {
         super(context);

@@ -1,7 +1,6 @@
 package com.sung.calendarview.utils;
 
 import com.sung.calendarview.adapter.DateObject;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,10 +11,11 @@ import java.util.TimeZone;
 
 /**
  * Created by sung on 2017/7/19.
+ * 1 获取当前页的日期数据
+ * 2 获取当前时间年、月、日
  */
 
 public class CalendarUtils {
-    private static String TAG = "CalendarUtils";
     //大月
     private static int[] months_31_days = {0,2,4,6,7,9,11};
     //小月
@@ -40,6 +40,8 @@ public class CalendarUtils {
 
     /**
      * 获取显示在grid上的天数数组
+     * @param month 月
+     * @param year 年
      * */
     public static List<DateObject> DateList(int year, int month){
         List<DateObject> dates = new ArrayList<>();
@@ -70,12 +72,12 @@ public class CalendarUtils {
             date.currentMonth = currentMonth;
             dates.add(date);
         }
-//        Log.d(TAG, "DateList: 第一天位置"+firstDayPosition+"/上月角标"+lastMonth+"-"+TotalDays(lastMonth)+"/当月角标"+month+"-"+TotalDays(month));
         return dates;
     }
 
     /**
     * 获取该月总天数
+    * @param month 月份
     * */
     private static int TotalDays(int month){
         //小

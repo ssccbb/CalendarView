@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.sung.calendarview.R;
+import com.sung.calendarview.utils.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,15 +20,6 @@ import java.util.List;
 
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder> implements View.OnClickListener{
     public List<DateObject> dates = new ArrayList<>();
-    /**
-    * 日期选中的四种状态
-    * 方／左圆／右圆／全圆
-    * */
-    public final int CALENDAR_SELLECT_CENTER = 0;
-    public final int CALENDAR_SELLECT_LEFT = 1;
-    public final int CALENDAR_SELLECT_RIGHT = 2;
-    public final int CALENDAR_SELLECT_SINGLE = 3;
-
     private onCalendarDayClick onCalendarDayClickListner;
 
     public DateAdapter(List<DateObject> dates) {
@@ -45,6 +36,8 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
 
     @Override
     public void onBindViewHolder(DateViewHolder holder, int position) {
+        Log.d(holder.toString());
+
         holder.position = position;
         DateObject date = dates.get(position);
         holder.day.setText(dates.get(position).day+"");
@@ -105,6 +98,11 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
         }
     }
 
+    /**
+    * 根据前后的选中状态判断图片的状态
+    * @param holder holder操作ui
+    * @param position 游标
+    * */
     private void setSellectStatus(int position, DateViewHolder holder){
         DateObject date = dates.get(position);
         if (!date.currentMonth)
