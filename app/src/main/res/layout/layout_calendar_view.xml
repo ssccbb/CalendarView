@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/calendar_time_text"
+        android:padding="10dp"
+        android:text="2017年10月"
+        android:textSize="22sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <TextView
+            android:text="周日"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:text="周一"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:text="周二"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:text="周三"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:text="周四"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:text="周五"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:text="周六"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/calendar_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
+</LinearLayout>
