@@ -9,7 +9,9 @@
         android:layout_margin="10dp"
         android:paddingLeft="3dp"
         android:text="2017年10月"
-        android:textSize="22sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
