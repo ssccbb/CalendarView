@@ -21,8 +21,7 @@
         android:visibility="gone"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/holo_orange_dark"
-        android:textSize="10dp"
-        />
+        android:textSize="10dp" />
 
     <TextView
         android:id="@+id/calendar_item_text_day"
@@ -32,5 +31,16 @@
         android:text="1"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
+
+    <TextView
+        android:textColor="@android:color/holo_orange_dark"
+        android:layout_below="@+id/calendar_item_text_day"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/calendar_item_today"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:textSize="8sp"
+        android:text="当天" />
 
 </RelativeLayout>

@@ -5,17 +5,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.sung.calendarview.adapter.DateAdapter;
 import com.sung.calendarview.adapter.DateObject;
 import com.sung.calendarview.adapter.PagerAdapter;
 import com.sung.calendarview.R;
 import com.sung.calendarview.utils.CalendarUtils;
+import com.sung.calendarview.utils.Log;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,13 +29,35 @@ import java.util.TimeZone;
 public class CalendarView extends RelativeLayout implements ViewPager.OnPageChangeListener,DateAdapter.onCalendarDayClick{
     private static final String TAG = "CalendarView";
     private Context context;
-
+    /**
+    *   总共多少页
+    * */
+    private int DEFAULT_MONTH_NUM = 7;
+    /**
+    *   年月
+    * */
     private TextView mCalendarTime;
+    /**
+     *  viewpager
+     * */
     private ViewPager mCalendarPager;
+    /**
+     *  切换view集合
+     * */
     private List<View> views = new ArrayList<>();
+    /**
+     *  上页标/当前页标
+     * */
     private int LAST_PAGER_SELECT = 0;
     private int CURRENT_PAGER_SELECT = 0;
+    /**
+     *  datebean
+     * */
     private DateObject mDate;
+    /**
+    *   当前date
+    * */
+    public static DateObject TODAY;
 
     public CalendarView(Context context) {
         super(context);
@@ -70,10 +91,10 @@ public class CalendarView extends RelativeLayout implements ViewPager.OnPageChan
     }
 
     /**
-    * 共13页 中间当月 前后各六月
+    * 共x页 中间当月 前后各x/2月
     * */
     private void PagerInit(){
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < DEFAULT_MONTH_NUM; i++) {
             View pager = LayoutInflater.from(context).inflate(R.layout.layout_calendar_pager, null);
             RecyclerView date = (RecyclerView) pager.findViewById(R.id.calendar_recycle);
             date.setLayoutManager(new GridLayoutManager(context,7));
@@ -86,8 +107,8 @@ public class CalendarView extends RelativeLayout implements ViewPager.OnPageChan
         }
         PagerAdapter adapter = new PagerAdapter(views);
         mCalendarPager.setAdapter(adapter);
-        CURRENT_PAGER_SELECT = LAST_PAGER_SELECT = 6;
-        mCalendarPager.setCurrentItem(6);
+        CURRENT_PAGER_SELECT = LAST_PAGER_SELECT = DEFAULT_MONTH_NUM/2;
+        mCalendarPager.setCurrentItem(CURRENT_PAGER_SELECT);
         mCalendarPager.setOnPageChangeListener(this);
 
         //notify
@@ -95,7 +116,10 @@ public class CalendarView extends RelativeLayout implements ViewPager.OnPageChan
     }
 
     private void DataInit(){
-        mDate = getCurrentDate();
+        TODAY = getCurrentDate();
+        //java特性 直接赋上TODAY的话相当于指向同一个对象 修改mdate的时候把TODAY也会改 故new
+        //防止其他月重复显示当天flag
+        mDate = new DateObject(TODAY);
         mCalendarTime.setText(mDate.YYMM);
     }
 
@@ -171,6 +195,6 @@ public class CalendarView extends RelativeLayout implements ViewPager.OnPageChan
 
     @Override
     public void onClick(int position) {
-        Log.d(TAG, "onClick: "+position);
+        Log.d("onclick:"+position);
     }
 }

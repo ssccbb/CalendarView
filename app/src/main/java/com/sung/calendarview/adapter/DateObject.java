@@ -21,6 +21,17 @@ public class DateObject implements Serializable{
     public DateObject() {
     }
 
+    public DateObject(DateObject dateObject) {
+        this.year = dateObject.year;
+        this.month = dateObject.month;
+        this.day = dateObject.day;
+        this.YYMM = dateObject.YYMM;
+        this.YYMMDD = dateObject.YYMMDD;
+        this.position = dateObject.position;
+        this.currentMonth = dateObject.currentMonth;
+        this.sellectStatus = dateObject.sellectStatus;
+    }
+
     public DateObject(int year, int month, int day) {
         this.year = year;
         this.month = month;

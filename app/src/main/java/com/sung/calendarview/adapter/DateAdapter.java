@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.sung.calendarview.R;
+import com.sung.calendarview.utils.CalendarUtils;
 import com.sung.calendarview.utils.Log;
+import com.sung.calendarview.view.CalendarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +38,8 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
 
     @Override
     public void onBindViewHolder(DateViewHolder holder, int position) {
-        Log.d(holder.toString());
+        //此处设置不复用 防止选中状态以及月标状态错乱
+        holder.setIsRecyclable(false);
 
         holder.position = position;
         DateObject date = dates.get(position);
@@ -54,6 +57,13 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
             //多重保险
             if (holder.day.getText().toString().trim().equals("1"))
                 holder.month.setVisibility(View.VISIBLE);
+        }
+
+        //设置当天
+        if (date.year == CalendarView.TODAY.year
+                && date.month == CalendarView.TODAY.month
+                && date.day == CalendarView.TODAY.day){
+            holder.flag.setVisibility(View.VISIBLE);
         }
 
         //设置当月高亮
@@ -162,6 +172,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
     public static class DateViewHolder extends RecyclerView.ViewHolder {
         public RelativeLayout root;
         public ImageView sellect;
+        public TextView flag;
         public TextView day;
         public TextView month;
         public int position;
@@ -171,6 +182,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
             position = 0;
             root = (RelativeLayout) view.findViewById(R.id.calendar_item_root);
             sellect = (ImageView) view.findViewById(R.id.calendar_item_sellect);
+            flag = (TextView) view.findViewById(R.id.calendar_item_today);
             day = (TextView) view.findViewById(R.id.calendar_item_text_day);
             month = (TextView) view.findViewById(R.id.calendar_item_text_month);
         }
