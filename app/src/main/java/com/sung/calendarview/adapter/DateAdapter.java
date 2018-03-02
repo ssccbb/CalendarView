@@ -1,5 +1,6 @@
 package com.sung.calendarview.adapter;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.sung.calendarview.R;
+import com.sung.calendarview.provider.ProviderMannager;
 import com.sung.calendarview.utils.CalendarUtils;
 import com.sung.calendarview.utils.Log;
 import com.sung.calendarview.view.CalendarView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,10 +24,12 @@ import java.util.List;
  */
 
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder> implements View.OnClickListener{
+    private Context mContext;
     public List<DateObject> dates = new ArrayList<>();
     private onCalendarDayClick onCalendarDayClickListner;
 
-    public DateAdapter(List<DateObject> dates) {
+    public DateAdapter(Context context, List<DateObject> dates) {
+        this.mContext = context;
         if (dates != null)
             this.dates = dates;
     }
@@ -83,7 +88,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
         return dates.size();
     }
 
-    public void setDates(List dates, boolean reset){
+    public void setDates(List dates, int pagerIndex, boolean reset){
         if (dates == null)
             return;
 
@@ -92,6 +97,21 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
         }
         this.dates.addAll(dates);
         this.notifyDataSetChanged();
+
+        //查询当前pagerindex是否存入数据库
+        List<DateObject> result = ProviderMannager.query(mContext, pagerIndex, true);
+        if (result.size() == 0) {
+            Log.d("date query not exits !!");
+            for (DateObject date : (List<DateObject>)dates) {
+                ProviderMannager.insert(mContext, date);
+            }
+        }else {
+            Log.d("date query exits !!");
+        }
+    }
+
+    public DateObject getDateObjectWithPosition(int position){
+        return this.dates.get(position);
     }
 
     @Override

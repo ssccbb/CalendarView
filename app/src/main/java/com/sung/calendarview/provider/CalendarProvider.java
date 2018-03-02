@@ -38,11 +38,14 @@ public class CalendarProvider extends ContentProvider {
         mDatesProjectionMap = new HashMap<>();
         mDatesProjectionMap.put(Provider.DatesColumns._ID,Provider.DatesColumns._ID);
         mDatesProjectionMap.put(Provider.DatesColumns.POSITION,Provider.DatesColumns.POSITION);
+        mDatesProjectionMap.put(Provider.DatesColumns.PAGER_INDEX,Provider.DatesColumns.PAGER_INDEX);
         mDatesProjectionMap.put(Provider.DatesColumns.YEAR,Provider.DatesColumns.YEAR);
         mDatesProjectionMap.put(Provider.DatesColumns.MONTH,Provider.DatesColumns.MONTH);
         mDatesProjectionMap.put(Provider.DatesColumns.DAY,Provider.DatesColumns.DAY);
         mDatesProjectionMap.put(Provider.DatesColumns.CURRENT_MONTH,Provider.DatesColumns.CURRENT_MONTH);
         mDatesProjectionMap.put(Provider.DatesColumns.SELLECT_STATUS,Provider.DatesColumns.SELLECT_STATUS);
+        mDatesProjectionMap.put(Provider.DatesColumns.YYMMDD,Provider.DatesColumns.YYMMDD);
+        mDatesProjectionMap.put(Provider.DatesColumns.YYMM,Provider.DatesColumns.YYMM);
     }
 
     @Override
@@ -118,6 +121,9 @@ public class CalendarProvider extends ContentProvider {
         if (values.containsKey(Provider.DatesColumns.POSITION) == false)
             values.put(Provider.DatesColumns.POSITION,0);
 
+        if (values.containsKey(Provider.DatesColumns.PAGER_INDEX) == false)
+            values.put(Provider.DatesColumns.PAGER_INDEX,0);
+
         if (values.containsKey(Provider.DatesColumns.YEAR) == false)
             values.put(Provider.DatesColumns.YEAR,1993);
 
@@ -132,6 +138,11 @@ public class CalendarProvider extends ContentProvider {
             values.put(Provider.DatesColumns.CURRENT_MONTH,0);
         if (values.containsKey(Provider.DatesColumns.SELLECT_STATUS) == false)
             values.put(Provider.DatesColumns.SELLECT_STATUS,0);
+
+        if (values.containsKey(Provider.DatesColumns.YYMMDD) == false)
+            values.put(Provider.DatesColumns.YYMMDD,"");
+        if (values.containsKey(Provider.DatesColumns.YYMM) == false)
+            values.put(Provider.DatesColumns.YYMM,"");
 
         SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
         long insert = db.insert(Provider.DatesColumns.TABLE_NAME, Provider.DatesColumns.POSITION, values);
