@@ -47,21 +47,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void test() {
-        for (int i = 0; i < 5; i++) {
-            Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00"));
-            DateObject date = new DateObject(calendar);
-            date.position = 10;
-            date.pagerIndex = i;
-            date.currentMonth = true;
-            date.sellectStatus = false;
-            ProviderMannager.insert(this, date);
-        }
-        Log.d("------------ query all ---------------");
-        ProviderMannager.query(this);
-        Log.d("------------query pager index : 0 ---------------");
-        ProviderMannager.query(this, 0, true);
-        Log.d("---------------------------");
-    }
 }

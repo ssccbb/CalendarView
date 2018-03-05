@@ -118,13 +118,19 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
     public void onClick(View view) {
         if (view instanceof RelativeLayout){
             DateViewHolder holder = (DateViewHolder) view.getTag();
-            if (!dates.get(holder.position).currentMonth)
+            DateObject date = dates.get(holder.position);
+            if (!date.currentMonth)
                 return;
 
-            dates.get(holder.position).sellectStatus = !dates.get(holder.position).sellectStatus;
+            date.sellectStatus = !date.sellectStatus;
 
             this.notifyDataSetChanged();
             onCalendarDayClickListner.onClick(holder.position);
+
+            //更新数据库当前日期选中状态
+            if (date._id != -1) {
+                ProviderMannager.update(mContext, date._id, date.sellectStatus);
+            }
         }
     }
 
@@ -135,6 +141,7 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
     * */
     private void setSellectStatus(int position, DateViewHolder holder){
         DateObject date = dates.get(position);
+        //Log.e("position:"+position+"\tsellect status:"+date.sellectStatus);
         if (!date.currentMonth)
             return;
 

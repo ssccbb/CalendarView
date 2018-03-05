@@ -16,9 +16,11 @@ import java.util.HashMap;
 
 /**
  * Created by sung on 2017/7/25.
+ *
+ * ContentProvider
  */
 
-public class CalendarProvider extends ContentProvider {
+public class BaseProvider extends ContentProvider {
     private static final UriMatcher mUriMatcher;
     private static HashMap<String, String> mDatesProjectionMap;
 

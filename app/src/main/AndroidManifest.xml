@@ -20,6 +20,6 @@
         
         <provider
             android:authorities="com.sung.provider.calendarview"
-            android:name=".provider.CalendarProvider"/>
+            android:name=".provider.BaseProvider"/>
     </application>
 </manifest>

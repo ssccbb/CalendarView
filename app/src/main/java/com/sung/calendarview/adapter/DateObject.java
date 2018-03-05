@@ -9,6 +9,7 @@ import java.util.Date;
  */
 
 public class DateObject implements Serializable {
+    public int _id = -1;
     public int year;
     public int month;
     public int day;
@@ -23,6 +24,7 @@ public class DateObject implements Serializable {
     }
 
     public DateObject(DateObject dateObject) {
+        this._id = dateObject._id;
         this.year = dateObject.year;
         this.month = dateObject.month;
         this.day = dateObject.day;
@@ -63,6 +65,10 @@ public class DateObject implements Serializable {
         YYMM = year + "年" + month + "月";
     }
 
+    public void set_id(int _id) {
+        this._id = _id;
+    }
+
     public void setYear(int year) {
         this.year = year;
     }
@@ -93,6 +99,10 @@ public class DateObject implements Serializable {
 
     @Override
     public String toString() {
-        return "pager index:" + pagerIndex + "\t|\t" + "grid index:" + position + "\t|\t" + "date:" + YYMMDD;
+        return "_id:" + _id + "\t|\t"
+                + "pager index:" + pagerIndex + "\t|\t"
+                + "grid index:" + position + "\t|\t"
+                + "date:" + YYMMDD + "\t|\t"
+                + "sellect status:" + sellectStatus;
     }
 }

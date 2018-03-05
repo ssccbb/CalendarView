@@ -204,6 +204,6 @@ public class CalendarView extends RelativeLayout implements ViewPager.OnPageChan
         RecyclerView date = (RecyclerView) views.get(CURRENT_PAGER_SELECT).getTag();
         DateAdapter adapter = (DateAdapter) date.getAdapter();
         DateObject dateObject = adapter.getDateObjectWithPosition(position);
-        Log.d("click position:" + position + "\t|\t" + dateObject.toString());
+        Log.d("click \t" + dateObject.toString());
     }
 }

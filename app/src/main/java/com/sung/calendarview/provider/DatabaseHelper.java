@@ -13,7 +13,7 @@ import com.sung.calendarview.utils.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "calendar_sung.db";
-    private static final int DATABASE_VERSION = 3;//数据库更改结构请提升版本
+    private static final int DATABASE_VERSION = 4;//数据库更改结构请提升版本
 
     public DatabaseHelper(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);

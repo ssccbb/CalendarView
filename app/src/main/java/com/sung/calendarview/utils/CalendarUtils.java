@@ -142,18 +142,6 @@ public class CalendarUtils {
         return false;
     }
 
-    /**
-     * 获取传入月份与当前月份的差值
-     *
-     * @param month 需要查询的月份
-     */
-    private static int getDvalueOfCurrentmonth(int month) {
-        int dValue = 0;
-        int currentMonth = CurrentMonth();
-        Log.d("current month:" + currentMonth + "\tquery month:" + month);
-        return dValue;
-    }
-
     public static int CurrentYear() {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+08:00"));
         //Log.d(calendar.get(Calendar.YEAR) + "");
