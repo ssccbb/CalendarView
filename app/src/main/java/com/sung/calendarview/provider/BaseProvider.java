@@ -17,7 +17,7 @@ import java.util.HashMap;
 /**
  * Created by sung on 2017/7/25.
  *
- * ContentProvider
+ * ContentProvider基类
  */
 
 public class BaseProvider extends ContentProvider {

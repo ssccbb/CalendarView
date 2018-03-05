@@ -1,19 +1,17 @@
-package com.sung.calendarview;
+package com.sung.calendarview.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.sung.calendarview.adapter.DateObject;
-import com.sung.calendarview.provider.Provider;
+import com.sung.calendarview.R;
+import com.sung.calendarview.bean.DateObject;
 import com.sung.calendarview.provider.ProviderMannager;
 import com.sung.calendarview.utils.Log;
 import com.sung.calendarview.view.CalendarView;
 
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         init();
-        //test();
     }
 
     private void init() {

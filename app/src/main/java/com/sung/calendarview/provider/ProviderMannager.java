@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.sung.calendarview.adapter.DateObject;
+import com.sung.calendarview.bean.DateObject;
 import com.sung.calendarview.utils.Log;
 
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by sung on 2017/7/25.
+ * Provider操作类
  */
 
 public class ProviderMannager {

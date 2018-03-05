@@ -2,9 +2,8 @@ package com.sung.calendarview.utils;
 
 import android.content.Context;
 
-import com.sung.calendarview.adapter.DateObject;
+import com.sung.calendarview.bean.DateObject;
 import com.sung.calendarview.provider.ProviderMannager;
-import com.sung.calendarview.view.CalendarView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package com.sung.calendarview.adapter;
+package com.sung.calendarview.bean;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -9,7 +9,7 @@ import java.util.Date;
  */
 
 public class DateObject implements Serializable {
-    public int _id = -1;
+    public int _id = -1;//数据库中存的id
     public int year;
     public int month;
     public int day;
@@ -17,8 +17,8 @@ public class DateObject implements Serializable {
     public String YYMM;//年月
     public int position;//在grid中的位置
     public int pagerIndex;//在viewpager中的页数位置
-    public boolean currentMonth = false;
-    public boolean sellectStatus = false;
+    public boolean currentMonth = false;//当月标志
+    public boolean sellectStatus = false;//选中标志
 
     public DateObject() {
     }

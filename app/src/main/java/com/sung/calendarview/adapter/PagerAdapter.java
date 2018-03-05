@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Created by sung on 2017/7/19.
+ *
+ * 月份适配器
  */
 
 public class PagerAdapter extends android.support.v4.view.PagerAdapter{

@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.sung.calendarview.adapter.DateAdapter;
-import com.sung.calendarview.adapter.DateObject;
+import com.sung.calendarview.bean.DateObject;
 import com.sung.calendarview.adapter.PagerAdapter;
 import com.sung.calendarview.R;
 import com.sung.calendarview.utils.CalendarUtils;

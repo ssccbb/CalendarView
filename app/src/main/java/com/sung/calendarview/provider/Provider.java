@@ -18,7 +18,9 @@ public class Provider {
 
     public static final class DatesColumns implements BaseColumns{
 
-        public static final Uri CONTENT_URI = Uri.parse("content://"+AUTHORITY+"/dates");//通用uri
+        //通用uri
+        public static final Uri CONTENT_URI = Uri.parse("content://"+AUTHORITY+"/dates");
+
         public static final String TABLE_NAME = "dates";
         public static final String DEFAULT_SORT_ORDER = "position desc";
 

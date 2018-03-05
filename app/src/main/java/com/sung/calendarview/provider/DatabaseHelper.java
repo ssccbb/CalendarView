@@ -21,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        /* 建表 */
         sqLiteDatabase.execSQL("CREATE TABLE "+Provider.DatesColumns.TABLE_NAME+" ("
                 +Provider.DatesColumns._ID+" INTEGER PRIMARY KEY,"
                 +Provider.DatesColumns.POSITION + " INTEGER,"
@@ -49,6 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        /* 表更新 */
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Provider.DatesColumns.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }

@@ -10,17 +10,18 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.sung.calendarview.R;
+import com.sung.calendarview.bean.DateObject;
 import com.sung.calendarview.provider.ProviderMannager;
-import com.sung.calendarview.utils.CalendarUtils;
 import com.sung.calendarview.utils.Log;
 import com.sung.calendarview.view.CalendarView;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by sung on 2017/7/19.
+ *
+ * 日期适配器
  */
 
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder> implements View.OnClickListener{
@@ -88,6 +89,13 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
         return dates.size();
     }
 
+    /**
+     * 获取日期详情
+     * */
+    public DateObject getDateObjectWithPosition(int position){
+        return this.dates.get(position);
+    }
+
     public void setDates(List dates, int pagerIndex, boolean reset){
         if (dates == null)
             return;
@@ -107,30 +115,6 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
             }
         }else {
             Log.d("date query exits !!");
-        }
-    }
-
-    public DateObject getDateObjectWithPosition(int position){
-        return this.dates.get(position);
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view instanceof RelativeLayout){
-            DateViewHolder holder = (DateViewHolder) view.getTag();
-            DateObject date = dates.get(holder.position);
-            if (!date.currentMonth)
-                return;
-
-            date.sellectStatus = !date.sellectStatus;
-
-            this.notifyDataSetChanged();
-            onCalendarDayClickListner.onClick(holder.position);
-
-            //更新数据库当前日期选中状态
-            if (date._id != -1) {
-                ProviderMannager.update(mContext, date._id, date.sellectStatus);
-            }
         }
     }
 
@@ -215,11 +199,41 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.DateViewHolder
         }
     }
 
+    /**
+     * 状态变更
+     * */
+    @Override
+    public void onClick(View view) {
+        if (view instanceof RelativeLayout){
+            DateViewHolder holder = (DateViewHolder) view.getTag();
+            DateObject date = dates.get(holder.position);
+            if (!date.currentMonth)
+                return;
+
+            date.sellectStatus = !date.sellectStatus;
+
+            this.notifyDataSetChanged();
+            onCalendarDayClickListner.onClick(holder.position);
+
+            // 更新数据库当前日期选中状态
+            // date._id == -1即代表当前点击的date对象
+            // query的未查询到有效的数据表id此时弃置不做更新处理
+            if (date._id != -1) {
+                ProviderMannager.update(mContext, date._id, date.sellectStatus);
+            }
+        }
+    }
+
     public void setOnCalendarDayClickListner(onCalendarDayClick onCalendarDayClickListner){
         this.onCalendarDayClickListner = onCalendarDayClickListner;
     }
 
     public interface onCalendarDayClick{
+
+        /**
+         * 监听已内部响应选中状态的标示以及数据库相关的操作
+         * 外部接口监听只需要实现点击之后的逻辑不必关心内部
+         * */
         void onClick(int position);
     }
 }
