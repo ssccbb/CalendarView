@@ -26,3 +26,8 @@
 
 各类颜色使用android的基本色，xml内可自行更换
 
+当前项目系列文章讲解移步blog：
+
+[基于ViewPager+Recyclerview实现的CalendarView视图(一)](http://zhouqipa.com/2017/07/21/%E5%9F%BA%E4%BA%8EViewPager+Recyclerview%E5%AE%9E%E7%8E%B0%E7%9A%84CalendarView%E8%A7%86%E5%9B%BE(%E4%B8%80).html)
+
+[基于ViewPager+Recyclerview实现的CalendarView视图(二)](http://zhouqipa.com/2018/03/08/%E5%9F%BA%E4%BA%8EViewPager+Recyclerview%E5%AE%9E%E7%8E%B0%E7%9A%84CalendarView%E8%A7%86%E5%9B%BE(%E4%BA%8C).html)
